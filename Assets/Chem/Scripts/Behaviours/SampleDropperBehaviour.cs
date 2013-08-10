@@ -17,6 +17,8 @@ public class SampleDropperBehaviour : MonoBehaviour {
 			
 			SampleBehaviour sampleBhv = collider.gameObject.GetComponent<SampleBehaviour>();
 			sampleBhv.state = SampleBehaviour.SampleState.Dissolving;
+			
+			tube.Dissolve(sampleBhv);
 		}
 	}
 }
