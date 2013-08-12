@@ -21,18 +21,14 @@ public class AttachObjectsAtPoint : MonoBehaviour {
 	public void Attach(Transform connectedBodyTransform)
 	{
 			
-		this.connectedBodyTransform = connectedBodyTransform;
+		this.connectedBodyTransform	 = connectedBodyTransform;
 		
 		if (!springJoint)
 		{
 			springJoint = (SpringJoint)this.gameObject.AddComponent ("SpringJoint");
 		}
 		
-		//springJoint.transform.position = this.thisObjectConnectionTransform.position;
-		
-		///springJoint.anchor = Vector3.zero;
-
-		springJoint.anchor = springJoint.transform.InverseTransformPoint(this.thisObjectConnectionTransform.transform.position);
+		springJoint.anchor = this.transform.InverseTransformPoint(thisObjectConnectionTransform.position);
 
 		springJoint.spring = spring;
 		springJoint.damper = damper;

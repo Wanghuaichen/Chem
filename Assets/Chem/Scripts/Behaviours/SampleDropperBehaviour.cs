@@ -10,15 +10,17 @@ public class SampleDropperBehaviour : MonoBehaviour {
 	void OnTriggerEnter(Collider collider)
 	{
 		if(collider.tag.Equals("Sample"))
-		{
-			Debug.Log("Dropping sample into : " + this.name);
-			
-			MainBehaviour.Instance.pincet.state = PincetBehaviour.PincetState.Dropped;
-			
+		{	
 			SampleBehaviour sampleBhv = collider.gameObject.GetComponent<SampleBehaviour>();
-			sampleBhv.state = SampleBehaviour.SampleState.Dissolving;
+
+			if(sampleBhv.state == SampleBehaviour.SampleState.Picked)
+			{
 			
-			tube.Dissolve(sampleBhv);
+				Debug.Log("Dropping sample into : " + this.name);
+			
+				MainBehaviour.Instance.pincet.state = PincetBehaviour.PincetState.Dropped;
+				tube.Dissolve(sampleBhv);
+			}
 		}
 	}
 }

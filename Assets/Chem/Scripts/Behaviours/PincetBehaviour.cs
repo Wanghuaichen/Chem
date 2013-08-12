@@ -8,113 +8,114 @@ public class PincetBehaviour : MonoBehaviour {
 		Idle,
 		Used,
 		Dropped,
-		Picked
+		Picked,
+		Returned
 	};
 	
-	private AttachObjectsAtPoint attachScript;
+	public SampleBehaviour sample;
 	
 	public PincetState state;
 	private PincetState oldState;
 	
-	Transform draggedTransform;
+	private DirectionAligner verticalizer;
+	private PositionAligner positioner;
 	
-	public Transform attachmentPoint;
-	
-	Transform initial;
-	Quaternion 	toOrientation,
-				bent;
-	
-	
-	private SpringJoint dragSpring;
-	private GameObject dragObject;
+	ObjectDragger dragObject;
+	public PincetTipBehaviour pincetTip;
 	
 	// Use this for initialization
 	void Start () {
-		initial = this.transform;
-		this.bent = Quaternion.AngleAxis(90.0f, new Vector3(1.0f, 0.0f, 0.0f)) * this.initial.rotation;
+		verticalizer = GetComponent<DirectionAligner>();
 		
-		dragObject = GameObject.CreatePrimitive(PrimitiveType.Cube);
-		Rigidbody dragRigidBody = dragObject.AddComponent<Rigidbody>();
-		dragRigidBody.isKinematic = true;
+		dragObject = GetComponent<ObjectDragger>();
+		dragObject.attachmentPoint = this.pincetTip.transform;
 		
-		dragObject.transform.position = this.transform.position;
-		
-		dragSpring = this.gameObject.AddComponent<SpringJoint>();
-		dragSpring.spring = 100.0f;
-		dragSpring.damper = 10.0f;
-		dragSpring.anchor = Vector3.zero;
-		dragSpring.connectedBody = dragObject.rigidbody;
+		positioner = GetComponent<PositionAligner>();
+		positioner.targetPosition = this.transform.position;
 	}
 	
-	public void SetPickedSample(Transform sampleAttacher)
+	public void SetPickedSample(SampleBehaviour sample)
 	{
-			this.attachScript = sampleAttacher.GetComponent<AttachObjectsAtPoint>();
-			this.state = PincetState.Picked;
+		this.sample = sample;
+		this.state = PincetState.Picked;
 	}
 	
 	// Update is called once per frame
 	void Update () {
 		if(this.state != this.oldState)
 		{
-			
-			this.oldState = this.state;
+			Debug.Log(this.name + " state changed: " + this.state);
 			
 			if(this.state.Equals(PincetState.Idle))
 			{
-				this.toOrientation = this.initial.rotation;
 				
 			}
 			else if(state.Equals(PincetState.Used))
 			{
-				this.toOrientation = bent;
 				
 			}
-			else if(state.Equals(PincetState.Picked)){
-					this.toOrientation = bent;
-					attachScript.Attach(this.transform);
+			else if(state.Equals(PincetState.Picked))
+			{
+				
+			}
+			else if(state == PincetState.Dropped)
+			{
+				this.sample.sampleTip.DetachFromPincet();
+			}
+			else if(state == PincetState.Returned)
+			{
+				Debug.Log ("Doing the returned bit");
+				
+				this.verticalizer.localFrom = Vector3.up;
+				this.verticalizer.to = Vector3.forward;
+				
+				this.positioner.enabled = true;
 			}
 			else
 			{
-				this.toOrientation = this.transform.rotation;
-				
-				if(attachScript)
-					attachScript.Detach();
-				
 				this.state = PincetState.Used;
 			}
+			
+			this.oldState = this.state;
 		}
 		
 		if(this.state.Equals(PincetState.Idle))
 		{
-			if(Input.GetMouseButton(0))
+			if(Input.GetMouseButton(0) && MainBehaviour.Instance.state == MainState.Pincet)
 			{
 				RaycastHit rayInfo;
 				Ray ray = Camera.mainCamera.ScreenPointToRay(Input.mousePosition);
-				
-				Debug.Log(ray.direction);
 				
 				if(this.collider.Raycast(ray, out rayInfo, 2000.0f))
 				{
 					this.state = PincetState.Used;
 				}
 			}
+			
+			this.verticalizer.localFrom = Vector3.up;
+			this.verticalizer.to = Vector3.forward;
 		}
 		
-		if(!state.Equals(PincetState.Idle))
+		if(this.state == PincetState.Returned)
 		{
-			Plane plane = new Plane(new Vector3(0.0f, 0.0f, -1.0f), 0.0f);
-			Ray ray = Camera.mainCamera.ScreenPointToRay(Input.mousePosition);
-			
-			float t ;
-			
-			if(plane.Raycast(ray, out t))
-			{
-				Vector3 point = ray.GetPoint(t);
-				this.dragObject.transform.position =  point;
-			}
+
 		}
 		
-		if(this.toOrientation != this.transform.rotation)
-			this.transform.rotation = Quaternion.Slerp(this.transform.rotation, toOrientation, Time.deltaTime);
+		if(state != PincetState.Idle && state != PincetState.Returned)
+		{
+			this.dragObject.Drag();
+		}
+		
+		if(this.state == PincetState.Used)
+		{
+			this.verticalizer.localFrom = Vector3.up;
+			this.verticalizer.to = Vector3.down;
+			
+		}
+	}
+	
+	public bool isReturned()
+	{
+		return this.state == PincetState.Returned;
 	}
 }

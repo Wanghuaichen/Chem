@@ -4,9 +4,13 @@ using System.Collections;
 public enum MainState
 {
 	StartAnimation,
-	PincetStage,
+	Filling,
+	Filled,
+	Pincet,
 	Dissolution,
-	PostDissolution
+	PostDissolution,
+	Finishing,
+	Finished
 }
 
 public class MainBehaviour : MonoBehaviour {
@@ -36,14 +40,36 @@ public class MainBehaviour : MonoBehaviour {
     }
 	
 	public MainState state = MainState.StartAnimation;
+	private MainState oldState;
+	
 	public PincetBehaviour pincet;
 	public TubeBehaviour firstTube, secondTube;
+	public ContainerBehaviour container;
+	
+	public ArrowBehaviour arrow;
+	
+	public SampleBehaviour feSample, znSample;
 	
 	void Update()
 	{
+		if(this.state != this.oldState)
+		{
+			if(this.state == MainState.PostDissolution)
+			{
+				this.firstTube.state = TubeBehaviour.TubeState.Idle;
+				this.secondTube.state = TubeBehaviour.TubeState.Idle;
+				
+				this.firstTube.sample.state = SampleBehaviour.SampleState.Dissolved;
+				this.secondTube.sample.state = SampleBehaviour.SampleState.Dissolved;
+			}
+			
+			this.oldState = this.state;
+		}
+		
 		if(this.state == MainState.StartAnimation)
 		{
-			this.animation.Play("CameraFlyIn", AnimationPlayMode.Stop);
+			//this.animation.Play("CameraFlyIn", AnimationPlayMode.Stop);
+			this.state = MainState.Filling;
 		}
 		else if(this.state == MainState.Dissolution)
 		{
@@ -54,8 +80,26 @@ public class MainBehaviour : MonoBehaviour {
 		{
 			this.state = MainState.Dissolution;
 			this.pincet.state = PincetBehaviour.PincetState.Idle;
-			this.firstTube.sample.state = SampleBehaviour.SampleState.Dissolved;
-			this.secondTube.sample.state = SampleBehaviour.SampleState.Dissolved;
+		}
+		
+		if(this.oldState == MainState.PostDissolution && feSample.isReturned() && znSample.isReturned())
+		{
+			this.state = MainState.Finishing;
+		}
+		
+		if(oldState == MainState.Finishing && this.pincet.isReturned())
+		{
+			this.state = MainState.Finished;
+		}
+		
+		if(this.oldState == MainState.Filling && firstTube.isFilled() && secondTube.isFilled())
+		{
+			this.state = MainState.Filled;
+		}
+		
+		if(this.oldState == MainState.Filled && this.container.isReturned())
+		{
+			this.state = MainState.Pincet;
 		}
 	}
 	
@@ -67,7 +111,7 @@ public class MainBehaviour : MonoBehaviour {
 	
 	public void setInitialFinished()
 	{
-		this.state = MainState.PincetStage;
+		this.state = MainState.Filling;
 		pincet.state = PincetBehaviour.PincetState.Idle;
 	}
 }
