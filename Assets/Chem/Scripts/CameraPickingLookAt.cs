@@ -21,7 +21,7 @@ public class CameraPickingLookAt : MonoBehaviour {
 		
 //		Component[] components = GetComponents<Collider>();
 		
-		Camera mainCamera = Camera.mainCamera;
+		Camera mainCamera = Camera.main;
 		
 //		foreach(Component comp in components)
 		{

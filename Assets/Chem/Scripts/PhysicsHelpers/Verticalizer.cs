@@ -14,6 +14,6 @@ public class Verticalizer : MonoBehaviour {
 	void Update () {
 			float angularDrag = Mathf.Max( MaxDrag * Vector3.Dot(
 				this.transform.TransformDirection(Vector3.down), Vector3.down), 0.1f);
-			this.rigidbody.angularDrag = angularDrag;
+			this.GetComponent<Rigidbody>().angularDrag = angularDrag;
 	}
 }

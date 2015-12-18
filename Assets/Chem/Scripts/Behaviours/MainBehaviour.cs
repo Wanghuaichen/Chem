@@ -73,7 +73,7 @@ public class MainBehaviour : MonoBehaviour {
 		}
 		else if(this.state == MainState.Dissolution)
 		{
-			this.animation.Play("TubeCloseUp", AnimationPlayMode.Stop);
+			this.GetComponent<Animation>().Play("TubeCloseUp", AnimationPlayMode.Stop);
 		}
 		
 		if(this.firstTube.isDissolving() && this.secondTube.isDissolving() && this.state != MainState.PostDissolution)

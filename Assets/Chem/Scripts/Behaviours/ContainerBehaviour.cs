@@ -54,7 +54,7 @@ public class ContainerBehaviour : MonoBehaviour {
 			{
 				this.positioner.targetPosition = this.pouringPosition;
 				this.positioner.enabled = true;
-				this.rigidbody.isKinematic = true;
+				this.GetComponent<Rigidbody>().isKinematic = true;
 			}
 			else if(this.state == ContainerState.Returned)
 			{
@@ -64,7 +64,7 @@ public class ContainerBehaviour : MonoBehaviour {
 			if(this.state != ContainerState.Pouring)
 			{
 				this.positioner.enabled = false;
-				this.rigidbody.isKinematic = false;
+				this.GetComponent<Rigidbody>().isKinematic = false;
 			}
 			
 			this.oldState = this.state;

@@ -12,7 +12,7 @@ public class PositionAligner : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		this.rigidbody.isKinematic = true;
+		this.GetComponent<Rigidbody>().isKinematic = true;
 		this.transform.position = Vector3.Lerp(this.transform.position, targetPosition, speed * Time.deltaTime);
 	}
 }

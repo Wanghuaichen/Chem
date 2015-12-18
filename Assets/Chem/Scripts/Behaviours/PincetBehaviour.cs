@@ -84,9 +84,9 @@ public class PincetBehaviour : MonoBehaviour {
 			if(Input.GetMouseButton(0) && MainBehaviour.Instance.state == MainState.Pincet)
 			{
 				RaycastHit rayInfo;
-				Ray ray = Camera.mainCamera.ScreenPointToRay(Input.mousePosition);
+				Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
 				
-				if(this.collider.Raycast(ray, out rayInfo, 2000.0f))
+				if(this.GetComponent<Collider>().Raycast(ray, out rayInfo, 2000.0f))
 				{
 					this.state = PincetState.Used;
 				}

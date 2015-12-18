@@ -28,7 +28,7 @@ public class DirectionAligner : MonoBehaviour {
 		{
 			float dot = Vector3.Dot(globalFrom.normalized, to.normalized);
 			float angularDrag = Mathf.Max(dot * maxDamping, 0.1f);
-			this.rigidbody.angularDrag = angularDrag;
+			this.GetComponent<Rigidbody>().angularDrag = angularDrag;
 		}
 		
 		this.transform.rotation = Quaternion.Slerp(this.transform.rotation, this.orientation, Time.deltaTime * speed);

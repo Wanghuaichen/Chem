@@ -14,7 +14,7 @@ public class SetCenterOfMass : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		this.rigidbody.centerOfMass = CenterOfMass.localPosition;
+		this.GetComponent<Rigidbody>().centerOfMass = CenterOfMass.localPosition;
 		line.SetPosition(1, CenterOfMass.position);
 	}
 }

@@ -15,7 +15,7 @@ public class FollowMouseOnPlane : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		Camera camera = Camera.mainCamera;
+		Camera camera = Camera.main;
 		Ray mouseRay = camera.ScreenPointToRay(Input.mousePosition);
 	
 		Plane plane = new Plane(origin.forward, origin.position);

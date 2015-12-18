@@ -23,7 +23,7 @@ public class DragableObject : MonoBehaviour
  
 	void Start () 
 	{
-	    myRigidbody = rigidbody;
+	    myRigidbody = GetComponent<Rigidbody>();
 	    myTransform = transform;
 	    if (!cam) 
 		{

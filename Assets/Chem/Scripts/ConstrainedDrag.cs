@@ -40,8 +40,8 @@ public class ConstrainedDrag : MonoBehaviour {
 		if (!springJoint)
 		{
 			go = new GameObject("Rigidbody dragger");
-			Rigidbody body = (Rigidbody)go.AddComponent ("Rigidbody");
-			springJoint = (SpringJoint)go.AddComponent ("SpringJoint");
+			Rigidbody body = (Rigidbody)go.AddComponent <Rigidbody>();
+			springJoint = (SpringJoint)go.AddComponent <SpringJoint>();
 			body.isKinematic = true;
 		}
 		
@@ -106,9 +106,9 @@ public class ConstrainedDrag : MonoBehaviour {
 	
 	Camera FindCamera ()
 	{
-		if (camera)
-			return camera;
+		if (GetComponent<Camera>())
+			return GetComponent<Camera>();
 		else
-			return Camera.mainCamera;
+			return Camera.main;
 	}
 }

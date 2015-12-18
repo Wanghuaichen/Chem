@@ -18,7 +18,7 @@ public class SampleTriggererBehaviour : MonoBehaviour {
 		sampleSpring.anchor = sample.transform.InverseTransformPoint(this.transform.position);
 		sampleSpring.maxDistance = 0.01f;
 		
-		sampleOldDrag = sample.rigidbody.drag;
+		sampleOldDrag = sample.GetComponent<Rigidbody>().drag;
 	}
 	
 	void OnTriggerEnter(Collider collider)
@@ -50,12 +50,12 @@ public class SampleTriggererBehaviour : MonoBehaviour {
 	void AttachToPincet(PincetBehaviour pincet)
 	{
 		this.sampleSpring.spring = conSpringStiff;
-		sampleSpring.rigidbody.drag = this.sampleSpringDrag;
+		sampleSpring.GetComponent<Rigidbody>().drag = this.sampleSpringDrag;
 
 	
 		if(!sampleSpring.connectedBody)
 		{
-			sampleSpring.connectedBody = pincet.pincetTip.transform.rigidbody;
+			sampleSpring.connectedBody = pincet.pincetTip.transform.GetComponent<Rigidbody>();
 			sample.transform.position += pincet.pincetTip.transform.position - this.transform.position;
 		}
 	}
@@ -64,7 +64,7 @@ public class SampleTriggererBehaviour : MonoBehaviour {
 	{
 		this.sampleSpring.connectedBody = null;
 		this.sampleSpring.spring = 0.0f;
-		this.sampleSpring.rigidbody.drag = this.sampleOldDrag;
+		this.sampleSpring.GetComponent<Rigidbody>().drag = this.sampleOldDrag;
 	}
 	
 	// Update is called once per frame

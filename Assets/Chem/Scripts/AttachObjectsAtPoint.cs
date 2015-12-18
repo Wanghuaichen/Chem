@@ -25,7 +25,7 @@ public class AttachObjectsAtPoint : MonoBehaviour {
 		
 		if (!springJoint)
 		{
-			springJoint = (SpringJoint)this.gameObject.AddComponent ("SpringJoint");
+			springJoint = (SpringJoint)this.gameObject.AddComponent <SpringJoint>();
 		}
 		
 		springJoint.anchor = this.transform.InverseTransformPoint(thisObjectConnectionTransform.position);
@@ -33,7 +33,7 @@ public class AttachObjectsAtPoint : MonoBehaviour {
 		springJoint.spring = spring;
 		springJoint.damper = damper;
 		springJoint.maxDistance = distance;
-		springJoint.connectedBody = this.connectedBodyTransform.rigidbody;
+		springJoint.connectedBody = this.connectedBodyTransform.GetComponent<Rigidbody>();
 	}
 	
 	public void Detach()

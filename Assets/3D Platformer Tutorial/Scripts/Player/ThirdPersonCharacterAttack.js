@@ -11,7 +11,7 @@ private var busy = false;
 
 function Start ()
 {
-	animation["punch"].speed = punchSpeed;	
+	GetComponent.<Animation>()["punch"].speed = punchSpeed;	
 }
 
 function Update ()
@@ -26,7 +26,7 @@ function Update ()
 
 function DidPunch ()
 {
-	animation.CrossFadeQueued("punch", 0.1, QueueMode.PlayNow);
+	GetComponent.<Animation>().CrossFadeQueued("punch", 0.1, QueueMode.PlayNow);
 	yield WaitForSeconds(punchHitTime);
 	var pos = transform.TransformPoint(punchPosition);
 	var enemies : GameObject[] = GameObject.FindGameObjectsWithTag("Enemy");
@@ -42,7 +42,7 @@ function DidPunch ()
 			enemy.SendMessage("ApplyDamage", punchHitPoints);
 			// Play sound.
 			if (punchSound)
-				audio.PlayOneShot(punchSound);
+				GetComponent.<AudioSource>().PlayOneShot(punchSound);
 		}
 	}
 	yield WaitForSeconds(punchTime - punchHitTime);

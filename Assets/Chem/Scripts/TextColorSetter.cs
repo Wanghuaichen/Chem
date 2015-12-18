@@ -7,7 +7,7 @@ public class TextColorSetter : MonoBehaviour {
 	
 	// Use this for initialization
 	void Start () {
-		renderer.material.color = selectedColor;
+		GetComponent<Renderer>().material.color = selectedColor;
 	}
 	
 	// Update is called once per frame

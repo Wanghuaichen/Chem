@@ -27,13 +27,13 @@ public class ObjectDragger : MonoBehaviour {
 		dragSpring.spring = springStiffness;
 		dragSpring.damper = springDamper;
 		dragSpring.anchor = this.transform.InverseTransformPoint(this.attachmentPoint.position);
-		dragSpring.connectedBody = dragObject.rigidbody;
+		dragSpring.connectedBody = dragObject.GetComponent<Rigidbody>();
 			
 	}
 	
 	public void Drag()
 	{
-		Ray ray = Camera.mainCamera.ScreenPointToRay(Input.mousePosition);
+		Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
 		
 		float t;
 		if(plane.Raycast(ray, out t))

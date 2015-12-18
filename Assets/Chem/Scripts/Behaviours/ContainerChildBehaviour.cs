@@ -16,10 +16,10 @@ public class ContainerChildBehaviour : MonoBehaviour {
 		{
 			if(Input.GetMouseButton(0))
 			{
-				Ray ray = Camera.mainCamera.ScreenPointToRay(Input.mousePosition);
+				Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
 				RaycastHit rayHit;
 				
-				if(this.collider.Raycast(ray, out rayHit, 2000.0f))
+				if(this.GetComponent<Collider>().Raycast(ray, out rayHit, 2000.0f))
 				{
 					this.container.state = ContainerBehaviour.ContainerState.Picked;
 				}

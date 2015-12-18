@@ -1,0 +1,188 @@
+fileFormatVersion: 2
+guid: f2d038cfaeefa4acd82553dd07006d92
+timeCreated: 1450479321
+licenseType: Free
+ModelImporter:
+  serializedVersion: 19
+  fileIDToRecycleName:
+    100000: allTrees
+    100002: arenaPlatform
+    100004: bigBridges
+    100006: bridgeLightsLeft
+    100008: bridgeLightsRight
+    100010: circularPlatforms
+    100012: cloudPlanes
+    100014: firstFloatingPlatforms
+    100016: firstFloorPlatforms
+    100018: firstFloorRails
+    100020: firstLights
+    100022: firstPlatform
+    100024: firstRailings
+    100026: grassTop
+    100028: impoundFence
+    100030: impoundLights
+    100032: impoundLot
+    100034: impoundPlatform
+    100036: jailHouse
+    100038: laserTunnels
+    100040: launchTubes
+    100042: //RootNode
+    100044: midPlatform
+    100046: tiles
+    400000: allTrees
+    400002: arenaPlatform
+    400004: bigBridges
+    400006: bridgeLightsLeft
+    400008: bridgeLightsRight
+    400010: circularPlatforms
+    400012: cloudPlanes
+    400014: firstFloatingPlatforms
+    400016: firstFloorPlatforms
+    400018: firstFloorRails
+    400020: firstLights
+    400022: firstPlatform
+    400024: firstRailings
+    400026: grassTop
+    400028: impoundFence
+    400030: impoundLights
+    400032: impoundLot
+    400034: impoundPlatform
+    400036: jailHouse
+    400038: laserTunnels
+    400040: launchTubes
+    400042: //RootNode
+    400044: midPlatform
+    400046: tiles
+    2300000: allTrees
+    2300002: arenaPlatform
+    2300004: bigBridges
+    2300006: bridgeLightsLeft
+    2300008: bridgeLightsRight
+    2300010: circularPlatforms
+    2300012: cloudPlanes
+    2300014: firstFloatingPlatforms
+    2300016: firstFloorPlatforms
+    2300018: firstFloorRails
+    2300020: firstLights
+    2300022: firstPlatform
+    2300024: firstRailings
+    2300026: grassTop
+    2300028: impoundFence
+    2300030: impoundLights
+    2300032: impoundLot
+    2300034: impoundPlatform
+    2300036: jailHouse
+    2300038: laserTunnels
+    2300040: launchTubes
+    2300042: midPlatform
+    2300044: tiles
+    3300000: allTrees
+    3300002: arenaPlatform
+    3300004: bigBridges
+    3300006: bridgeLightsLeft
+    3300008: bridgeLightsRight
+    3300010: circularPlatforms
+    3300012: cloudPlanes
+    3300014: firstFloatingPlatforms
+    3300016: firstFloorPlatforms
+    3300018: firstFloorRails
+    3300020: firstLights
+    3300022: firstPlatform
+    3300024: firstRailings
+    3300026: grassTop
+    3300028: impoundFence
+    3300030: impoundLights
+    3300032: impoundLot
+    3300034: impoundPlatform
+    3300036: jailHouse
+    3300038: laserTunnels
+    3300040: launchTubes
+    3300042: midPlatform
+    3300044: tiles
+    4300000: allTrees
+    4300002: arenaPlatform
+    4300004: bigBridges
+    4300006: bridgeLightsLeft
+    4300008: bridgeLightsRight
+    4300010: circularPlatforms
+    4300012: cloudPlanes
+    4300014: firstFloatingPlatforms
+    4300016: firstFloorPlatforms
+    4300018: firstFloorRails
+    4300020: firstLights
+    4300022: firstPlatform
+    4300024: firstRailings
+    4300026: grassTop
+    4300028: impoundFence
+    4300030: impoundLights
+    4300032: impoundLot
+    4300034: impoundPlatform
+    4300036: jailHouse
+    4300038: laserTunnels
+    4300040: launchTubes
+    4300042: midPlatform
+    4300044: tiles
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleRotations: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 0
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
